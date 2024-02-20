@@ -31,10 +31,10 @@ int traceLuggage(int & HP1, int & EXP1, int & M1, int E3);
 int chaseTaxi(int & HP1, int & EXP1, int & HP2, int & EXP2, int E3);
 
 // Task 4
-int checkPassword(const char * s, const char * email);
+int checkPassword(string s,string email);
 
 // Task 5
-int findCorrectPassword(const char * arr_pwds[], int num_pwds);
+int findCorrectPassword(string arr_pwds[], int num_pwds);
 
 ////////////////////////////////////////////////
 /// END OF STUDENT'S ANSWER

@@ -3,4 +3,4 @@ project(initial)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(initial main.cpp)
+add_executable(initial main.cpp main.h study_in_pink1.cpp study_in_pink1.h)
