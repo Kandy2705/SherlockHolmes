@@ -1,0 +1,3 @@
+C:/Users/ACER/Downloads/KTLT/initial/cmake-build-debug/CMakeFiles/initial.dir
+C:/Users/ACER/Downloads/KTLT/initial/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ACER/Downloads/KTLT/initial/cmake-build-debug/CMakeFiles/rebuild_cache.dir
