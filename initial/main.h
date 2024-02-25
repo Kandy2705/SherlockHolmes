@@ -7,8 +7,8 @@
 * Date: 02.02.2023
 */
 
-#ifndef _MAIN_1_H_
-#define _MAIN_1_H_
+#ifndef _MAIN_H_
+#define _MAIN_H_
 
 #include <iostream>
 #include <iomanip>

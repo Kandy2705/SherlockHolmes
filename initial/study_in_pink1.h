@@ -25,16 +25,16 @@ bool readFile( const string & filename, int & HP1, int & HP2, int & EXP1, int & 
 int firstMeet(int & exp1, int & exp2, int e1);
 
 // Task 2
-int traceLuggage(int & HP1, int & EXP1, int & M1, int E3);
+int traceLuggage(int & HP1, int & EXP1, int & M1, int E2);
 
 // Task 3
 int chaseTaxi(int & HP1, int & EXP1, int & HP2, int & EXP2, int E3);
 
 // Task 4
-int checkPassword(string s,string email);
+int checkPassword(const char * s, const char * email);
 
 // Task 5
-int findCorrectPassword(string arr_pwds[], int num_pwds);
+int findCorrectPassword(const char * arr_pwds[], int num_pwds);
 
 ////////////////////////////////////////////////
 /// END OF STUDENT'S ANSWER

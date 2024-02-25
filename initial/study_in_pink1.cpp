@@ -110,7 +110,8 @@ int firstMeet(int &EXP1, int &EXP2, int E1){
         EXP2 = traexp(EXP2);
         EXP1 -= E1;
     }
-
+    EXP2 = traexp(EXP2);
+    EXP1 = traexp(EXP1);
     return EXP1 + EXP2;
 }
 
@@ -133,6 +134,9 @@ double tinhxacsuat(int &EXP1){
     return P1;
 }
 int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
+    if (E2 < 0 || E2 > 99){
+        return -99;
+    }
     // duong thu 1
     double P1 = tinhxacsuat(EXP1);
     // duong thu 2
@@ -211,6 +215,10 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
                 traexp(EXP1);
             }
         }
+        HP1 = ceil(ceil(HP1*0.83*100)/100);
+        EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+        traexp(EXP1);
+        tradunghp(HP1);
     }
     double P2 = tinhxacsuat(EXP1);
     //con duong 3
@@ -222,11 +230,11 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
     else {
         P3 = P[(E2%10 + E2/10)%10];
     }
-    if (P1 == 1 && P2 == 1 && P3 == 100){
+    if (P1 == 100 && P2 == 100 && P3 == 100){
         EXP1 = ceil(ceil((double)EXP1*0.75*100)/100);
     }
     else{
-        int P = (P1 + P2 + P3)/3;
+        double P = (P1 + P2 + P3)/3;
         if (P < 50){
             HP1 = ceil(ceil((double)HP1*0.85*100)/100);
             EXP1 = ceil(ceil((double)EXP1*1.15*100)/100);
@@ -247,6 +255,9 @@ int tinhgiatri(int E3, int i, int j){
     return ((E3*j) + (i*2))*(i-j);
 }
 int chaseTaxi(int &HP1 , int & EXP1, int &HP2, int &EXP2, int E3){
+    if (E3 < 0 || E3 > 99){
+        return -99;
+    }
     int P[10][10];
     memset(P, 0, sizeof(P));
     for(int i = 0; i < 10; i++){
@@ -391,16 +402,18 @@ bool kytudb(string c){
     }
     return true;
 }
-int checkPassword(string s,string email){
-    int dodai = email.size();
-    if (dodai > 100 || sokytu(email) != 1) return vitrivipham(email);
-    int vitria = email.find('@');
-    string se = email.substr(0,vitria - 1);
-    int ddmatkhau = s.size();
+int checkPassword(const char* s,const char* email){
+    string e(email);
+    string S(s);
+    int dodai = e.size();
+    if (dodai > 100 || sokytu(email) != 1) return vitrivipham(e);
+    int vitria = e.find('@');
+    string se = e.substr(0,vitria - 1);
+    int ddmatkhau = S.size();
     if (ddmatkhau < 8) return -1;
     else if (ddmatkhau > 20) return -2;
-    if (s.find(se) != string::npos){
-        return -(300+s.find(se));
+    if (S.find(se) != string::npos){
+        return -(300+S.find(se));
     }
     if (demlientiep(s) != -1){
         return -(400+demlientiep(s));
@@ -416,8 +429,8 @@ int checkPassword(string s,string email){
 
 //////////////////////////////////////////////////////////////////////
 // nhiem vu 5
-int demtrung(string arr_pwds[], int vitri,int num_pwds){
-    string vitrixet = arr_pwds[vitri];
+int demtrung(const char* arr_pwds[], int vitri,int num_pwds){
+    const char* vitrixet = arr_pwds[vitri];
     int count = 0;
     for(int i = 0; i < num_pwds; i++){
         if (arr_pwds[i] == vitrixet){
@@ -426,7 +439,7 @@ int demtrung(string arr_pwds[], int vitri,int num_pwds){
     }
     return count;
 }
-int findCorrectPassword(string arr_pwds[], int num_pwds){
+int findCorrectPassword(const char* arr_pwds[], int num_pwds){
     int vitritra = 0;
     for(int i = 0; i < num_pwds;i++){
         int a = demtrung(arr_pwds, i, num_pwds);
@@ -435,12 +448,12 @@ int findCorrectPassword(string arr_pwds[], int num_pwds){
             vitritra = i;
         }
         else if (a == b){
-            if (arr_pwds[i].size() == arr_pwds[vitritra].size()){
+            if (strlen(arr_pwds[i]) == strlen(arr_pwds[vitritra])){
                 if (i < vitritra){
                     vitritra = i;
                 }
             }
-            else if (arr_pwds[i].size() > arr_pwds[vitritra].size()){
+            else if (strlen(arr_pwds[i]) > strlen(arr_pwds[vitritra])){
                 vitritra = i;
             }
         }
