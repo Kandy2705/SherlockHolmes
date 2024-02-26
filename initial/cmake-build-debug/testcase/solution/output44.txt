@@ -1,2 +1,0 @@
-EXP1: 28, EXP2: 68
-Result: 96

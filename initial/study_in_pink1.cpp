@@ -56,6 +56,8 @@ int tram(int i){
 ///////////////////////////////////////////////////////////////
 //nhiem vu 1
 int firstMeet(int &EXP1, int &EXP2, int E1){
+    EXP1 = traexp(EXP1);
+    EXP2 = traexp(EXP2);
     if (E1 < 0 || E1 > 99){
         return -99;
     }
@@ -134,6 +136,9 @@ double tinhxacsuat(int &EXP1){
     return P1;
 }
 int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
+    M1 = tram(M1);
+    HP1 = tradunghp(HP1);
+    EXP1 = traexp(EXP1);
     if (E2 < 0 || E2 > 99){
         return -99;
     }
@@ -149,14 +154,14 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
             HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
             M1 -= 70;
         }
-        tram(M1);
-        tradunghp(HP1);
+        M1 = tram(M1);
+        HP1 = tradunghp(HP1);
         if (M1 > tienbd){
             if (EXP1 < 400) M1 -= 200;
             else M1 -= 120;
             EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
-            tram(M1);
-            traexp(EXP1);
+            M1 = tram(M1);
+            EXP1 = traexp(EXP1);
             if (M1 > tienbd){
                 if (EXP1 < 300) {
                     M1 -= 100;
@@ -164,25 +169,29 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
                     M1 -= 120;
                 }
                 EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
-                tram(M1);
-                traexp(EXP1);
+                M1 = tram(M1);
+                EXP1 = traexp(EXP1);
                 if (M1 <= tienbd){
+                    HP1 = ceil(ceil(HP1*0.83*100)/100);
+                    EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+                    EXP1 = traexp(EXP1);
+                    HP1 = tradunghp(HP1);
                     break;
                 }
             }
             else{
                 HP1 = ceil(ceil(HP1*0.83*100)/100);
                 EXP1 = ceil(ceil(EXP1*1.17*100)/100);
-                traexp(EXP1);
-                tradunghp(HP1);
+                EXP1 = traexp(EXP1);
+                HP1 = tradunghp(HP1);
                 break;
             }
         }
         else{
             HP1 = ceil(ceil(HP1*0.83*100)/100);
             EXP1 = ceil(ceil(EXP1*1.17*100)/100);
-            traexp(EXP1);
-            tradunghp(HP1);
+            EXP1 = traexp(EXP1);
+            HP1 = tradunghp(HP1);
             break;
         }
     }
@@ -194,15 +203,15 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
             HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
             M1 -= 70;
         }
-        tram(M1);
-        tradunghp(HP1);
+        M1 = tram(M1);
+        HP1 = tradunghp(HP1);
 
         if (M1 != 0){
             if (EXP1 < 400) M1 -= 200;
             else M1 -= 120;
             EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
-            tram(M1);
-            traexp(EXP1);
+            M1 = tram(M1);
+            EXP1 = traexp(EXP1);
 
             if(M1 != 0){
                 if (EXP1 < 300) {
@@ -211,14 +220,14 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
                     M1 -= 120;
                 }
                 EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
-                tram(M1);
-                traexp(EXP1);
+                M1 = tram(M1);
+                EXP1 = traexp(EXP1);
             }
         }
         HP1 = ceil(ceil(HP1*0.83*100)/100);
         EXP1 = ceil(ceil(EXP1*1.17*100)/100);
-        traexp(EXP1);
-        tradunghp(HP1);
+        EXP1 = traexp(EXP1);
+        HP1 = tradunghp(HP1);
     }
     double P2 = tinhxacsuat(EXP1);
     //con duong 3
@@ -232,6 +241,9 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
     }
     if (P1 == 100 && P2 == 100 && P3 == 100){
         EXP1 = ceil(ceil((double)EXP1*0.75*100)/100);
+        EXP1 = traexp(EXP1);
+        HP1 = tradunghp(HP1);
+        M1 = tram(M1);
     }
     else{
         double P = (P1 + P2 + P3)/3;
@@ -244,6 +256,7 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
             EXP1 = ceil(ceil((double)EXP1*1.2*100)/100);
         }
         EXP1 = traexp(EXP1);
+        HP1 = tradunghp(HP1);
     }
     return HP1 + EXP1 + M1;
 }
