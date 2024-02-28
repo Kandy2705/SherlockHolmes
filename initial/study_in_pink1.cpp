@@ -53,15 +53,25 @@ int tram(int i){
     else if ( i < 0) return 0;
     return i;
 }
+int lamtron(double e){
+    int a = round(e);
+    double hieu = e - a;
+    if (hieu >= 0.00000001 && hieu <= 0.99999999){
+        return a + 1;
+    }
+    else{
+        return a;
+    }
+}
 ///////////////////////////////////////////////////////////////
 //nhiem vu 1
 int firstMeet(int &EXP1, int &EXP2, int E1){
-    EXP1 = traexp(EXP1);
-    EXP2 = traexp(EXP2);
     if (E1 < 0 || E1 > 99){
         return -99;
     }
     else if (E1 >= 0 && E1 <= 3){
+        EXP1 = traexp(EXP1);
+        EXP2 = traexp(EXP2);
         if (E1 == 0){
             EXP2 += 29;
         }
@@ -78,35 +88,46 @@ int firstMeet(int &EXP1, int &EXP2, int E1){
 
         int D = E1 * 3 + EXP1*7;
         if (D % 2 == 0){
-            EXP1 = ceil(ceil((EXP1 + (double)D/200)*100)/100);
+            //EXP1 = ceil(ceil((EXP1 + (double)D/200)*100)/100);
+            EXP1 += lamtron( (double)D/200);
         }
         else{
-            EXP1 = ceil(ceil((EXP1 - (double)D/100)*100)/100);
+            //EXP1 = ceil(ceil((EXP1 - (double)D/100)*100)/100);
+            EXP1 = lamtron( EXP1 - (double)D/100);
         }
         EXP1 = traexp(EXP1);
     }
     else{
         if (E1 >= 4 && E1 <= 19){
-            EXP2 += ceil(ceil(((double)E1/4 + 19)*100)/100);
+            //EXP2 += ceil(ceil(((double)E1/4 + 19)*100)/100);
+            EXP2 += lamtron((double)E1/4 + 19);
         }
         else if (E1 >= 20 && E1<= 49){
-            EXP2 += ceil(ceil(((double)E1/9 + 21)*100)/100);
+            //EXP2 += ceil(ceil(((double)E1/9 + 21)*100)/100);
+            EXP2 += lamtron((double)E1/9 + 21);
         }
         else if (E1 >= 50 && E1 <= 65){
-            EXP2 += ceil(ceil(((double)E1/16 + 17)*100)/100);
+            //EXP2 += ceil(ceil(((double)E1/16 + 17)*100)/100);
+            EXP2 += lamtron((double)E1/16 + 17);
         }
         else if (E1 >= 66 && E1 <= 79){
-            EXP2 += ceil(ceil(((double)E1/4 + 19)*100)/100);
+            //EXP2 += ceil(ceil(((double)E1/4 + 19)*100)/100);
+            EXP2 += lamtron((double)E1/4 + 19);
             if (EXP2 > 200){
-                EXP2 += ceil(ceil(((double)E1/9 + 21)*100)/100);
+                //EXP2 += ceil(ceil(((double)E1/9 + 21)*100)/100);
+                EXP2 += lamtron((double)E1/9 + 21);
             }
         }
         else{
-            EXP2 += ceil(ceil(((double)E1/4 + 19)*100)/100);
-            EXP2 += ceil(ceil(((double)E1/9 + 21)*100)/100);
+            //EXP2 += ceil(ceil(((double)E1/4 + 19)*100)/100);
+            //EXP2 += ceil(ceil(((double)E1/9 + 21)*100)/100);
+            EXP2 += lamtron((double)E1/4 + 19);
+            EXP2 += lamtron((double)E1/9 + 21);
             if (EXP2 > 400){
-                EXP2 += ceil(ceil(((double)E1/16 + 17)*100)/100);
-                EXP2 = ceil(ceil(((double)EXP2*1.15)*100)/100);
+                //EXP2 += ceil(ceil(((double)E1/16 + 17)*100)/100);
+                //EXP2 = ceil(ceil(((double)EXP2*1.15)*100)/100);
+                EXP2 += lamtron((double)E1/16 + 17);
+                EXP2 = lamtron((double)EXP2*1.15);
             }
         }
         EXP2 = traexp(EXP2);
@@ -136,60 +157,71 @@ double tinhxacsuat(int &EXP1){
     return P1;
 }
 int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
-    M1 = tram(M1);
-    HP1 = tradunghp(HP1);
-    EXP1 = traexp(EXP1);
     if (E2 < 0 || E2 > 99){
         return -99;
     }
+    M1 = tram(M1);
+    HP1 = tradunghp(HP1);
+    EXP1 = traexp(EXP1);
     // duong thu 1
     double P1 = tinhxacsuat(EXP1);
     // duong thu 2
     int tienbd = M1*0.5;
     while(E2 % 2 != 0 && E2 != 0) {
         if (HP1 < 200) {
-            HP1 = ceil(ceil((double) HP1 * 1.3*100)/100);
+            //HP1 = ceil(ceil((double) HP1 * 1.3*100)/100);
+            HP1 = lamtron((double) HP1*1.3);
             M1 -= 150;
         } else {
-            HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
+            double giu = HP1*1.1;
+            //HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
+            HP1 = lamtron((double) HP1*1.1);
             M1 -= 70;
         }
         M1 = tram(M1);
         HP1 = tradunghp(HP1);
-        if (M1 > tienbd){
+        if (M1 >= tienbd){
             if (EXP1 < 400) M1 -= 200;
             else M1 -= 120;
-            EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
+            //EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
+            EXP1 = lamtron((double) EXP1*1.13);
             M1 = tram(M1);
             EXP1 = traexp(EXP1);
-            if (M1 > tienbd){
+            if (M1 >= tienbd){
                 if (EXP1 < 300) {
                     M1 -= 100;
                 } else {
                     M1 -= 120;
                 }
-                EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
+                //EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
+                EXP1 = lamtron((double) EXP1*0.9);
                 M1 = tram(M1);
                 EXP1 = traexp(EXP1);
-                if (M1 <= tienbd){
-                    HP1 = ceil(ceil(HP1*0.83*100)/100);
-                    EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+                if (M1 < tienbd){
+                    //HP1 = ceil(ceil(HP1*0.83*100)/100);
+                    //EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+                    HP1 = lamtron((double) HP1*0.83);
+                    EXP1 = lamtron((double) EXP1*1.17);
                     EXP1 = traexp(EXP1);
                     HP1 = tradunghp(HP1);
                     break;
                 }
             }
             else{
-                HP1 = ceil(ceil(HP1*0.83*100)/100);
-                EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+                //HP1 = ceil(ceil(HP1*0.83*100)/100);
+                //EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+                HP1 = lamtron((double) HP1*0.83);
+                EXP1 = lamtron((double) EXP1*1.17);
                 EXP1 = traexp(EXP1);
                 HP1 = tradunghp(HP1);
                 break;
             }
         }
         else{
-            HP1 = ceil(ceil(HP1*0.83*100)/100);
-            EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+            //HP1 = ceil(ceil(HP1*0.83*100)/100);
+            //EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+            HP1 = lamtron((double) HP1*0.83);
+            EXP1 = lamtron((double) EXP1*1.17);
             EXP1 = traexp(EXP1);
             HP1 = tradunghp(HP1);
             break;
@@ -197,10 +229,12 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
     }
     if (E2 % 2 == 0){
         if (HP1 < 200) {
-            HP1 = ceil(ceil((double) HP1 * 1.3*100)/100);
+            //HP1 = ceil(ceil((double) HP1 * 1.3*100)/100);
+            HP1 = lamtron((double) HP1*1.3);
             M1 -= 150;
         } else {
-            HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
+            //HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
+            HP1 = lamtron((double) HP1*1.1);
             M1 -= 70;
         }
         M1 = tram(M1);
@@ -209,7 +243,8 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
         if (M1 != 0){
             if (EXP1 < 400) M1 -= 200;
             else M1 -= 120;
-            EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
+           // EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
+            EXP1 = lamtron((double) EXP1*1.13);
             M1 = tram(M1);
             EXP1 = traexp(EXP1);
 
@@ -219,13 +254,16 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
                 } else {
                     M1 -= 120;
                 }
-                EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
+                //EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
+                EXP1 = lamtron((double) EXP1*0.9);
                 M1 = tram(M1);
                 EXP1 = traexp(EXP1);
             }
         }
-        HP1 = ceil(ceil(HP1*0.83*100)/100);
-        EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+        //HP1 = ceil(ceil(HP1*0.83*100)/100);
+        //EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+        HP1 = lamtron((double) HP1*0.83);
+        EXP1 = lamtron((double) EXP1*1.17);
         EXP1 = traexp(EXP1);
         HP1 = tradunghp(HP1);
     }
@@ -240,7 +278,8 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
         P3 = P[(E2%10 + E2/10)%10];
     }
     if (P1 == 100 && P2 == 100 && P3 == 100){
-        EXP1 = ceil(ceil((double)EXP1*0.75*100)/100);
+        //EXP1 = ceil(ceil((double)EXP1*0.75*100)/100);
+        EXP1 = lamtron((double) EXP1*0.75);
         EXP1 = traexp(EXP1);
         HP1 = tradunghp(HP1);
         M1 = tram(M1);
@@ -248,12 +287,17 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
     else{
         double P = (P1 + P2 + P3)/3;
         if (P < 50){
-            HP1 = ceil(ceil((double)HP1*0.85*100)/100);
-            EXP1 = ceil(ceil((double)EXP1*1.15*100)/100);
+            //HP1 = ceil(ceil((double)HP1*0.85*100)/100);
+            //EXP1 = ceil(ceil((double)EXP1*1.15*100)/100);
+            HP1 = lamtron((double) HP1*0.85);
+            EXP1 = lamtron((double) EXP1*1.15);
+
         }
         else{
-            HP1 = ceil(ceil((double)HP1*0.9*100)/100);
-            EXP1 = ceil(ceil((double)EXP1*1.2*100)/100);
+            //HP1 = ceil(ceil((double)HP1*0.9*100)/100);
+            //EXP1 = ceil(ceil((double)EXP1*1.2*100)/100);
+            HP1 = lamtron((double) HP1*0.9);
+            EXP1 = lamtron((double) EXP1*1.2);
         }
         EXP1 = traexp(EXP1);
         HP1 = tradunghp(HP1);
@@ -271,6 +315,10 @@ int chaseTaxi(int &HP1 , int & EXP1, int &HP2, int &EXP2, int E3){
     if (E3 < 0 || E3 > 99){
         return -99;
     }
+    HP1 = tradunghp(HP1);
+    EXP1 = traexp(EXP1);
+    HP2 = tradunghp(HP2);
+    EXP2 = traexp(EXP2);
     int P[10][10];
     memset(P, 0, sizeof(P));
     for(int i = 0; i < 10; i++){
@@ -348,16 +396,24 @@ int chaseTaxi(int &HP1 , int & EXP1, int &HP2, int &EXP2, int E3){
     i = giatridiemduong;
     j = giatridiemam;
     if(abs(diemgap) > gtlonnhat){
-        EXP1=ceil(ceil((double)EXP1*0.88*100)/100);
-        EXP2=ceil(ceil((double)EXP2*0.88*100)/100);
-        HP1=ceil(ceil((double)HP1*0.9*100)/100);
-        HP2=ceil(ceil((double)HP2*0.9*100)/100);
+//        EXP1=ceil(ceil((double)EXP1*0.88*100)/100);
+//        EXP2=ceil(ceil((double)EXP2*0.88*100)/100);
+//        HP1=ceil(ceil((double)HP1*0.9*100)/100);
+//        HP2=ceil(ceil((double)HP2*0.9*100)/100);
+        EXP1 = lamtron((double)EXP1*0.88);
+        EXP2 = lamtron((double)EXP2*0.88);
+        HP1 = lamtron((double)HP1*0.9);
+        HP2 = lamtron((double)HP2*0.9);
     }
     else{
-        EXP1=ceil(ceil((double)EXP1*1.12*100)/100);
-        EXP2=ceil(ceil((double)EXP2*1.12*100)/100);
-        HP1=ceil(ceil((float)HP1*1.1*100)/100);
-        HP2=ceil(ceil((double)HP2*1.1*100)/100);
+//        EXP1=ceil(ceil((double)EXP1*1.12*100)/100);
+//        EXP2=ceil(ceil((double)EXP2*1.12*100)/100);
+//        HP1=ceil(ceil((float)HP1*1.1*100)/100);
+//        HP2=ceil(ceil((double)HP2*1.1*100)/100);
+        EXP1 = lamtron((double)EXP1*1.12);
+        EXP2 = lamtron((double)EXP2*1.12);
+        HP1 = lamtron((double)HP1*1.1);
+        HP2 = lamtron((double)HP2*1.1);
     }
     EXP1=traexp(EXP1);
     EXP2=traexp(EXP2);
@@ -398,8 +454,9 @@ int vitrivipham(string s){
 }
 int demlientiep(string c){
     int dodai = c.size();
+    int dem = 0;
     for(int i = 0; i < dodai - 1; i++){
-        if (c[i] == c[i+1]){
+        if (c[i] == c[i+1] && c[i] == c[i+2]){
             return i;
         }
     }
@@ -421,7 +478,9 @@ int checkPassword(const char* s,const char* email){
     int dodai = e.size();
     if (dodai > 100 || sokytu(email) != 1) return vitrivipham(e);
     int vitria = e.find('@');
-    string se = e.substr(0,vitria - 1);
+    string se;
+    if (vitria == 0) se = "";
+    else se = e.substr(0,vitria);
     int ddmatkhau = S.size();
     if (ddmatkhau < 8) return -1;
     else if (ddmatkhau > 20) return -2;
@@ -442,8 +501,8 @@ int checkPassword(const char* s,const char* email){
 
 //////////////////////////////////////////////////////////////////////
 // nhiem vu 5
-int demtrung(const char* arr_pwds[], int vitri,int num_pwds){
-    const char* vitrixet = arr_pwds[vitri];
+int demtrung(string arr_pwds[], int vitri,int num_pwds){
+    string vitrixet = arr_pwds[vitri];
     int count = 0;
     for(int i = 0; i < num_pwds; i++){
         if (arr_pwds[i] == vitrixet){
@@ -452,21 +511,25 @@ int demtrung(const char* arr_pwds[], int vitri,int num_pwds){
     }
     return count;
 }
-int findCorrectPassword(const char* arr_pwds[], int num_pwds){
+int findCorrectPassword(const char* arr[], int num_pwds){
+    string arr_pwds[num_pwds];
+    for(int i =0; i < num_pwds; i++){
+        arr_pwds[i] = arr[i];
+    }
     int vitritra = 0;
-    for(int i = 0; i < num_pwds;i++){
+    for(int i = 1; i < num_pwds;i++){
         int a = demtrung(arr_pwds, i, num_pwds);
         int b =demtrung(arr_pwds, vitritra, num_pwds);
         if (a > b){
             vitritra = i;
         }
         else if (a == b){
-            if (strlen(arr_pwds[i]) == strlen(arr_pwds[vitritra])){
+            if (arr_pwds[i].size() == arr_pwds[vitritra].size()){
                 if (i < vitritra){
                     vitritra = i;
                 }
             }
-            else if (strlen(arr_pwds[i]) > strlen(arr_pwds[vitritra])){
+            else if (arr_pwds[i].size() > arr_pwds[vitritra].size()){
                 vitritra = i;
             }
         }

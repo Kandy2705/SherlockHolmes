@@ -21,7 +21,7 @@ result : -300
 email=1[g@h#b, Password=!b$@1[g#F1[g1[g
 result : -304
 email=$@a, Password=b$#$!C$!H$
-result : -300
+result : -301
 email=gh[f@fh$f, Password=C#!!EFEbgh[f@
 result : -308
 email=@, Password=cFC#@!
@@ -33,7 +33,7 @@ result : -301
 email=[d@gd, Password=GaE[dCc
 result : -1
 email=g@a, Password=#B$ggcCA
-result : -300
+result : -303
 email=h@1, Password=#[Ahhhc
 result : -1
 email=d@b, Password=dBC!cB
@@ -41,7 +41,7 @@ result : -1
 email=gaef@dahh, Password=gaefAFgaef@F
 result : -300
 email=[@h, Password=aBF#H[[#Ca
-result : -300
+result : -305
 email=@, Password=!AF
 result : -1
 email=$@[, Password=$$@@F@
@@ -55,7 +55,7 @@ result : -1
 email=fc@af, Password=cfcEHCFG@B
 result : -301
 email=b@b, Password=CbbAG!!bb
-result : -300
+result : -301
 email=c1$@cfd, Password=#c1$c1$c1$C$
 result : -301
 email=@, Password=F!a
@@ -65,19 +65,19 @@ result : -303
 email=g@1, Password=gGgGbgg
 result : -1
 email=@, Password=b#!E[cEB
-result : 4
+result : -300
 email=@, Password=H!c[BE
 result : -1
 email=$a@b#, Password=E$a#b$a#cB$a$a
 result : -301
 email=ad@d[, Password=[aadF!ad$
-result : -301
+result : -302
 email=c@h, Password=cFccG$c[BC
 result : -300
 email=fae@[1g, Password=##faeF!B
 result : -302
 email=1@h, Password=C#[[##!$CE
-result : -300
+result : 2
 email=ffeb@ffda, Password=!ffeb$B[@
 result : -301
 email=gec@a[e, Password=BGgecgec[C$A
@@ -145,7 +145,7 @@ result : -1
 email=dh1[@fcfd, Password=dh1[F!$c!
 result : -300
 email=b@h, Password=@$GFEb$Eb
-result : -300
+result : -305
 email=d$f@ccg, Password=d$faCa!!a@F
 result : -300
 email=c@g, Password=@$B!AbF
@@ -175,7 +175,7 @@ result : -1
 email=a@e, Password=aF[aba
 result : -1
 email=b@a, Password=Ab!bbGE@#
-result : -300
+result : -301
 email=$#f1@[fh$, Password=[$#f1[bb$#f1
 result : -301
 email=fb@ge, Password=!bCC[HC
@@ -193,7 +193,7 @@ result : -302
 email=f@e, Password=ff!F!fC
 result : -1
 email=bd@hb, Password=b$BcEC@c
-result : -300
+result : -10
 email=1f@ce, Password=1f1fH#$1f
 result : -300
 email=@, Password=@HB#!

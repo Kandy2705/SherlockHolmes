@@ -7,7 +7,7 @@ result : -300
 email=V@gmail.com, Password=VVaaa1234
 result : -300
 email=@gmail.com, Password=VVaaa122234
-result : -400
+result : -300
 email=Votien@gmail.com, Password=Votien12aa3
 result : -300
 email=Votien@gmail.com, Password=Votien12aaa
@@ -29,8 +29,8 @@ result : -10
 email=Votienz@gmail.com, Password=votiendeptrai$Ok
 result : -10
 email=@gmail.com, Password=votiendeptrai$Ok
-result : -10
+result : -300
 email=@, Password=votiendeptrai$Ok
-result : -10
+result : -300
 email=@, Password=votiendeptrai$Ok
-result : -10
+result : -300

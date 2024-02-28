@@ -76,6 +76,9 @@ void run(string input_file)
         int number;
         string s1, s2;
         for(int i = 0; i < 100 && !ifs.eof(); i++) {
+//            if(i*2+1 == 7){
+//                cout<<"";
+//            }
             ifs >> s1 >> s2 >> number;
             string s[200];
             for (int j = 0; j < number; j++) ifs >> s[j];
@@ -137,8 +140,8 @@ int main(int argc, char *argv[])
     if (argc == 1)
     {
         cout << "checking test : ";
-        START = 208;
-        END = 208;
+        START = 1;
+        END = 1000;
         for (int i = START; i <= END; i++)
         {
             cout << i << " ";

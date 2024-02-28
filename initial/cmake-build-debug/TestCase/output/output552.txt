@@ -1,7 +1,7 @@
 email=ddh@c1g, Password=ddh[@HG$!bE$
 result : -300
 email=$@e, Password=@$c$$CBE
-result : -300
+result : -301
 email=@, Password=@Ca
 result : -1
 email=1bd@h#c, Password=!H1bdC1bd!
@@ -11,7 +11,7 @@ result : -1
 email=[@h, Password=GE#![![
 result : -1
 email=1@[, Password=cbGG[Eb1
-result : -300
+result : -307
 email=[ff1@ee1h, Password=$![ff1$A##[ff1#[ff1
 result : -302
 email=facf@1eb#, Password=[Afacfc!c!$GF
@@ -43,7 +43,7 @@ result : -301
 email=h#@#f, Password=Hh#h#@#cbB
 result : -301
 email=@, Password=!a![AEEF
-result : -405
+result : -300
 email=b1f$@gcdc, Password=b1f$GaCb1f$HGAb1f$[
 result : -300
 email=@, Password=Ha[#Ga
@@ -53,7 +53,7 @@ result : -301
 email=a1@ca, Password=a1Ac[E!Ea1
 result : -300
 email=$@b, Password=@b@cEE$$@
-result : -300
+result : -306
 email=c1d@ca#, Password=Gccc1daGc1dc1d
 result : -303
 email=dgf1@1b1g, Password=cdgf1#AbC
@@ -67,9 +67,9 @@ result : -300
 email=[bf@$ae, Password=$BB@Bb
 result : -1
 email=1@1, Password=C1B!G!EG
-result : -300
+result : -301
 email=g@d, Password=FggG$bGggB
-result : -300
+result : -301
 email=ga[@bee, Password=Gga[!ACH
 result : -301
 email=abb@a$h, Password=CaH!abbCGabb
@@ -81,7 +81,7 @@ result : -300
 email=df@#d, Password=@G@dfaEAb
 result : -303
 email=c@h, Password=!cFH@FH!@c
-result : -300
+result : -301
 email=1g@ge, Password=1g#1g#![ba!#
 result : -300
 email=1hhf@deg1, Password=F@GFba
@@ -99,11 +99,11 @@ result : -301
 email=chad@$dd$, Password=cA#F!HaB
 result : -10
 email=@, Password=bEA@G!!ba$
-result : -303
+result : -300
 email=de@#$, Password=#HA#dededec#G
 result : -304
 email=@, Password=EHB$B!Ga
-result : -10
+result : -300
 email=f@1, Password=f!$GFc
 result : -1
 email=b@c, Password=bb!b@!a#b
@@ -159,7 +159,7 @@ result : -1
 email=hh@1#, Password=hhhhBH@!
 result : -300
 email=@, Password=FFb#bc![
-result : -400
+result : -300
 email=b$cf@ea[1, Password=b$cfb!HHb$cf
 result : -300
 email=#fhd@f1cc, Password=!@b!AFH!
@@ -195,6 +195,6 @@ result : -1
 email=a@a, Password=a$[aE@$b!
 result : -300
 email=@, Password=B@HG@!E$
-result : -301
-email=#f@h1, Password=#aCG@![BE
 result : -300
+email=#f@h1, Password=#aCG@![BE
+result : 6

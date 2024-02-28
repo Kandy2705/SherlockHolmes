@@ -5,7 +5,7 @@ result : -302
 email=c@1, Password=E!#HE!
 result : -1
 email=1@c, Password=G#ac$FCC
-result : -300
+result : -10
 email=h#gf@e#1f, Password=GEh#gfHC#ch#gfc
 result : -302
 email=dhh[@fghh, Password=dhh[@b#c!$@C@
@@ -29,7 +29,7 @@ result : -1
 email=d#ca@b1hb, Password=E$#B!d#ca!
 result : -305
 email=b@1, Password=A[G#baaGa
-result : -300
+result : -304
 email=11@a1, Password=1111B@#aF11F11
 result : -300
 email=1bd1@dfce, Password=F1bd11bd1a!$$
@@ -43,9 +43,9 @@ result : -1
 email=@, Password=C@EcG
 result : -1
 email=g@b, Password=!b@GbcgFEg
-result : -300
+result : -306
 email=e@1, Password=C[GeeE!@eH
-result : -300
+result : -303
 email=hgb@cfc, Password=hgb#hgb[C@!a
 result : -300
 email=c@1, Password=ca!$c$a#c[
@@ -55,7 +55,7 @@ result : -1
 email=f#e@ab1, Password=#!f#ea!F
 result : -302
 email=a@a, Password=Fba#a$[A
-result : -300
+result : -302
 email=e[bf@#[ch, Password=H[[Fe[bfG!e[bf
 result : -304
 email=e#[@fbf, Password=e#[@Ae#[e#[e#[AB
@@ -73,7 +73,7 @@ result : -302
 email=@, Password=#cE
 result : -1
 email=adh@$1d, Password=ECaa@#!a
-result : -402
+result : -10
 email=ag1h@abda, Password=A@$EFc$[ac
 result : 7
 email=[c@gh, Password=[c![c#G!BC
@@ -95,13 +95,13 @@ result : -300
 email=@, Password=FEH$
 result : -1
 email=h@h, Password=cEh#@hBhA#
-result : -300
+result : -302
 email=[eg@1he, Password=[egc[egcc!
 result : -300
 email=@, Password=Hb!$
 result : -1
 email=@, Password=!@$G@b!AC
-result : -301
+result : -300
 email=@, Password=@a@$$
 result : -1
 email=c@d, Password=cHccG$c!cc
@@ -109,7 +109,7 @@ result : -300
 email=[@b, Password=AF![cc
 result : -1
 email=[[h1@edgc, Password=BBAFc!$H
-result : -400
+result : -10
 email=@, Password=@CCaCAF
 result : -1
 email=@, Password=HF[!H#[
@@ -135,7 +135,7 @@ result : -1
 email=@, Password=b#a#
 result : -1
 email=$f@hf, Password=$$fa[AEFEA
-result : -300
+result : -301
 email=g@b, Password=!g!ggc
 result : -1
 email=[@e, Password=![[[B!
@@ -173,7 +173,7 @@ result : -300
 email=f@d, Password=f#acHfAfB#
 result : -300
 email=c@d, Password=GHc@@!FCac
-result : -300
+result : -302
 email=c1b1@fg[c, Password=c1b1C#cc1b1c1b1B!c1b1
 result : -2
 email=e1e@cda, Password=Ce1eCe1e@E
@@ -197,4 +197,4 @@ result : -306
 email=da@ea, Password=daFE!C!bC
 result : -300
 email=1@f, Password=@#@1A11C
-result : -300
+result : -303
