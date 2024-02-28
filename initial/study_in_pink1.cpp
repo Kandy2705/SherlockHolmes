@@ -98,6 +98,8 @@ int firstMeet(int &EXP1, int &EXP2, int E1){
         EXP1 = traexp(EXP1);
     }
     else{
+        EXP1 = traexp(EXP1);
+        EXP2 = traexp(EXP2);
         if (E1 >= 4 && E1 <= 19){
             //EXP2 += ceil(ceil(((double)E1/4 + 19)*100)/100);
             EXP2 += lamtron((double)E1/4 + 19);
@@ -166,98 +168,107 @@ int traceLuggage(int&HP1, int&EXP1, int&M1, int E2){
     // duong thu 1
     double P1 = tinhxacsuat(EXP1);
     // duong thu 2
-    int tienbd = M1*0.5;
+    int tienbd = (double)M1*0.5 + 0.5;
     while(E2 % 2 != 0 && E2 != 0) {
-        if (HP1 < 200) {
-            //HP1 = ceil(ceil((double) HP1 * 1.3*100)/100);
-            HP1 = lamtron((double) HP1*1.3);
-            M1 -= 150;
-        } else {
-            double giu = HP1*1.1;
-            //HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
-            HP1 = lamtron((double) HP1*1.1);
-            M1 -= 70;
-        }
-        M1 = tram(M1);
-        HP1 = tradunghp(HP1);
-        if (M1 >= tienbd){
-            if (EXP1 < 400) M1 -= 200;
-            else M1 -= 120;
-            //EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
-            EXP1 = lamtron((double) EXP1*1.13);
+        if (M1 > tienbd ||(M1 == tienbd && M1 !=0)) {
+            if (HP1 < 200) {
+                //HP1 = ceil(ceil((double) HP1 * 1.3*100)/100);
+                HP1 = lamtron((double) HP1 * 1.3);
+                M1 -= 150;
+            } else {
+                double giu = HP1 * 1.1;
+                //HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
+                HP1 = lamtron((double) HP1 * 1.1);
+                M1 -= 70;
+            }
             M1 = tram(M1);
-            EXP1 = traexp(EXP1);
-            if (M1 >= tienbd){
-                if (EXP1 < 300) {
-                    M1 -= 100;
-                } else {
-                    M1 -= 120;
-                }
-                //EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
-                EXP1 = lamtron((double) EXP1*0.9);
+            HP1 = tradunghp(HP1);
+            if (M1 > tienbd ||(M1 == tienbd && M1 !=0)) {
+                if (EXP1 < 400) M1 -= 200;
+                else M1 -= 120;
+                //EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
+                EXP1 = lamtron((double) EXP1 * 1.13);
                 M1 = tram(M1);
                 EXP1 = traexp(EXP1);
-                if (M1 < tienbd){
+                if (M1 > tienbd||(M1 == tienbd && M1 !=0)) {
+                    if (EXP1 < 300) {
+                        M1 -= 100;
+                    } else {
+                        M1 -= 120;
+                    }
+                    //EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
+                    EXP1 = lamtron((double) EXP1 * 0.9);
+                    M1 = tram(M1);
+                    EXP1 = traexp(EXP1);
+                    if (M1 < tienbd ||(M1 == tienbd && M1 ==0)) {
+                        //HP1 = ceil(ceil(HP1*0.83*100)/100);
+                        //EXP1 = ceil(ceil(EXP1*1.17*100)/100);
+                        HP1 = lamtron((double) HP1 * 0.83);
+                        EXP1 = lamtron((double) EXP1 * 1.17);
+                        EXP1 = traexp(EXP1);
+                        HP1 = tradunghp(HP1);
+                        break;
+                    }
+                } else {
                     //HP1 = ceil(ceil(HP1*0.83*100)/100);
                     //EXP1 = ceil(ceil(EXP1*1.17*100)/100);
-                    HP1 = lamtron((double) HP1*0.83);
-                    EXP1 = lamtron((double) EXP1*1.17);
+                    HP1 = lamtron((double) HP1 * 0.83);
+                    EXP1 = lamtron((double) EXP1 * 1.17);
                     EXP1 = traexp(EXP1);
                     HP1 = tradunghp(HP1);
                     break;
                 }
-            }
-            else{
+            } else {
                 //HP1 = ceil(ceil(HP1*0.83*100)/100);
                 //EXP1 = ceil(ceil(EXP1*1.17*100)/100);
-                HP1 = lamtron((double) HP1*0.83);
-                EXP1 = lamtron((double) EXP1*1.17);
+                HP1 = lamtron((double) HP1 * 0.83);
+                EXP1 = lamtron((double) EXP1 * 1.17);
                 EXP1 = traexp(EXP1);
                 HP1 = tradunghp(HP1);
                 break;
             }
         }
         else{
-            //HP1 = ceil(ceil(HP1*0.83*100)/100);
-            //EXP1 = ceil(ceil(EXP1*1.17*100)/100);
-            HP1 = lamtron((double) HP1*0.83);
-            EXP1 = lamtron((double) EXP1*1.17);
+            HP1 = lamtron((double) HP1 * 0.83);
+            EXP1 = lamtron((double) EXP1 * 1.17);
             EXP1 = traexp(EXP1);
             HP1 = tradunghp(HP1);
             break;
         }
     }
     if (E2 % 2 == 0){
-        if (HP1 < 200) {
-            //HP1 = ceil(ceil((double) HP1 * 1.3*100)/100);
-            HP1 = lamtron((double) HP1*1.3);
-            M1 -= 150;
-        } else {
-            //HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
-            HP1 = lamtron((double) HP1*1.1);
-            M1 -= 70;
-        }
-        M1 = tram(M1);
-        HP1 = tradunghp(HP1);
-
-        if (M1 != 0){
-            if (EXP1 < 400) M1 -= 200;
-            else M1 -= 120;
-           // EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
-            EXP1 = lamtron((double) EXP1*1.13);
+        if (M1 != 0) {
+            if (HP1 < 200) {
+                //HP1 = ceil(ceil((double) HP1 * 1.3*100)/100);
+                HP1 = lamtron((double) HP1 * 1.3);
+                M1 -= 150;
+            } else {
+                //HP1 = ceil(ceil((double) HP1 * 1.1*100)/100);
+                HP1 = lamtron((double) HP1 * 1.1);
+                M1 -= 70;
+            }
             M1 = tram(M1);
-            EXP1 = traexp(EXP1);
+            HP1 = tradunghp(HP1);
 
-            if(M1 != 0){
-                if (EXP1 < 300) {
-                    M1 -= 100;
-                } else {
-                    M1 -= 120;
-                }
-                //EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
-                EXP1 = lamtron((double) EXP1*0.9);
+            if (M1 != 0) {
+                if (EXP1 < 400) M1 -= 200;
+                else M1 -= 120;
+                // EXP1 = ceil(ceil((double) EXP1 * 1.13*100)/100);
+                EXP1 = lamtron((double) EXP1 * 1.13);
                 M1 = tram(M1);
                 EXP1 = traexp(EXP1);
+
+                if (M1 != 0) {
+                    if (EXP1 < 300) {
+                        M1 -= 100;
+                    } else {
+                        M1 -= 120;
+                    }
+                    //EXP1 = ceil(ceil((double) EXP1 * 0.9*100)/100);
+                    EXP1 = lamtron((double) EXP1 * 0.9);
+                    M1 = tram(M1);
+                    EXP1 = traexp(EXP1);
+                }
             }
         }
         //HP1 = ceil(ceil(HP1*0.83*100)/100);
